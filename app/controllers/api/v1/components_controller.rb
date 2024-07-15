@@ -18,14 +18,13 @@ module Api
           render json: response
         end
         
+        def bulk_update
+          response = ::BulkUpdateComponents.call(@survey, params[:components])
+          render json: response
+        end
+
         def destroy
-          component = @survey.components.find_by_id(params[:id])
-          if component.blank?
-            response = { status: :failure, errors: ["Component not found for survey: #{@survey.name}"] }
-          else
-            component.destroy
-            response = { status: :success, errors: [] }
-          end
+          response = ::DeleteComponent.call(@survey, params[:id])
           render json: response
         end
 

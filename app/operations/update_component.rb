@@ -12,9 +12,9 @@ class UpdateComponent
       private
   
       def process(survey, component_id, params)
-        component = survey.components.find_by_id(component_id)
+        component = survey.components.with_deleted.find_by_id(component_id)
         raise_error("Component not found") if component.blank?
-        unless component.update(params)
+        unless component.update(params.merge!({deleted_at: nil}))
           raise_error(component.errors.full_messages.join(", "))
         end
         component

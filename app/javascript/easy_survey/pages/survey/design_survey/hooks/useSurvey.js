@@ -1,4 +1,9 @@
+import { debounce } from "lodash"
+import useDesignSurvey from "./useDesignSurvey";
+
 function useSurvey() {
+
+  // const { createComponent, updateComponent } = useDesignSurvey(dispatch);
 
   const dblClickHandler = (e, text) => {
     let element = e.target;
@@ -21,7 +26,7 @@ function useSurvey() {
     });
   };
 
-  const mouseDownHandler = (e, updateComponent, componentId) => {
+  const mouseDownHandler = (e, componentId, updateComponent) => {
     const element = e.target;
     if (element.contentEditable === "true") return;
     e.preventDefault();
@@ -37,7 +42,6 @@ function useSurvey() {
       const surveyContainer = document.getElementById('survey-container');
       const containerRect = surveyContainer.getBoundingClientRect();
       const elemRect = element.getBoundingClientRect();
-
       shouldChangeComponentAxis = newX >= containerRect.left &&
       newX + elemRect.width <= containerRect.right &&
       newY >= containerRect.top &&
@@ -81,13 +85,17 @@ function useSurvey() {
     });
   };
 
-  const labelTextChangeHandler = (e, updateComponent, componentId) => {
-    const text = e.target.innerText;
+  const labelTextChangeDebounce = debounce((text, componentId, updateComponent)=>{
     updateComponent({
       component: {
         text
       }
     }, componentId);
+  }, 300);
+
+  const labelTextChangeHandler = (e, componentId, updateComponent) => {
+    const text = e.target.innerText;
+    labelTextChangeDebounce(text, componentId, updateComponent);
   };
 
   return {dblClickHandler, blurHandler, mouseDownHandler, clickHandler, onDropHandler, labelTextChangeHandler};

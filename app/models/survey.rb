@@ -1,5 +1,6 @@
 class Survey < ApplicationRecord
-    has_many :components
-
+    acts_as_paranoid
+    
+    has_many :components, dependent: :destroy
     validates :name, presence: true
 end

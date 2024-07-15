@@ -17,6 +17,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_13_154321) do
     t.decimal "x_axis", precision: 2, null: false
     t.decimal "y_axis", precision: 2, null: false
     t.integer "survey_id", null: false
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["survey_id"], name: "index_components_on_survey_id"
@@ -25,6 +26,7 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_13_154321) do
   create_table "surveys", force: :cascade do |t|
     t.string "name", null: false
     t.text "description"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

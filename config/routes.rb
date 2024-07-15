@@ -10,7 +10,9 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :surveys, only: [:create, :index] do
-        resources :components, only: [:index, :create, :update, :destroy]
+        resources :components, only: [:index, :create, :update, :destroy] do
+          patch :bulk_update, on: :collection
+        end
       end
     end
   end
