@@ -1,6 +1,6 @@
 import React from 'react'
 import useSurvey from './hooks/useSurvey'
-
+import PropTypes from 'prop-types'
 
 function FieldElement({ id: componentId, field, text, x_axis, y_axis, selectedComponentId, updateComponent, dispatch}) {
 
@@ -38,6 +38,17 @@ function FieldElement({ id: componentId, field, text, x_axis, y_axis, selectedCo
         This is a input text
     </div>
   )
+}
+
+FieldElement.propTypes = {
+  id: PropTypes.number.isRequired,
+  field: PropTypes.string.isRequired,
+  text: PropTypes.string,
+  x_axis: PropTypes.number.isRequired,
+  y_axis: PropTypes.number.isRequired,
+  selectedComponentId: PropTypes.number,
+  updateComponent: PropTypes.func.isRequired,
+  dispatch: PropTypes.func.isRequired,
 }
 
 export default FieldElement;
