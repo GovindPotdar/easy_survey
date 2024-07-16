@@ -15,12 +15,8 @@ class BulkUpdateComponents
       ActiveRecord::Base.transaction do 
         component_ids = survey.components.with_deleted.ids
         components.each do |component|
-          response = if component_ids.include?(component[:id]) 
-            component_ids.delete(component[:id]) # After this only those ids will remain which we want to remove
-            UpdateComponent.call(survey, component[:id], prepare_params(component))
-          else
-            CreateComponent.call(survey, prepare_params(component))
-          end
+          component_ids.delete(component[:id]) # After this only those ids will remain which we want to remove
+          response = UpdateComponent.call(survey, component[:id], prepare_params(component))
           raise_error(response[:errors].join(", ")) if response[:status] == :failure
         end
         component_ids.each { |component_id| delete_component(survey, component_id) }

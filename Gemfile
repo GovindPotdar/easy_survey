@@ -52,6 +52,10 @@ gem 'acts_as_paranoid'
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "pry"
+  gem 'rspec-rails'
+  gem 'shoulda-matchers'
+  gem 'factory_bot_rails'
+  gem "faker"
 end
 
 group :development do

@@ -5,7 +5,7 @@ class Api::V1::BaseController < ApplicationController
     private
     def verify_api_token
         unless valid_token?
-            render json: {status: :unauthorized, errors: ["Invalid API key"]} and return
+            render json: { status: :unauthorized, errors: ["Invalid API key"] }, status: 401 and return
         end
     end
 
