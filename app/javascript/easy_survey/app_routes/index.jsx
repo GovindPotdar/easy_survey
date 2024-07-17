@@ -8,6 +8,7 @@ import Loader from '../components/loader';
 const Home = lazy(() => import("../pages/home"));
 const CreateSurvey = lazy(() => import("../pages/survey/create_survey"));
 const DesignSurvey = lazy(() => import("../pages/survey/design_survey"));
+const PageNotFound = lazy(()=>import('../pages/page_not_found'));
 
 function AppRoutes() {
   return (
@@ -18,6 +19,7 @@ function AppRoutes() {
           <Route index element={<Home />} />
           <Route path="/create-survey" element={<CreateSurvey />} />
           <Route path="/design-survey/:surveyId" element={<DesignSurvey />} />
+          <Route path="*" element={<PageNotFound />} />
         </Routes>
       </Suspense>
     </>
