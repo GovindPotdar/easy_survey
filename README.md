@@ -18,6 +18,7 @@ For creating this application, **Ruby on Rails**, **React**, and **REST APIs** w
 ![image](https://github.com/user-attachments/assets/f987a439-9303-485d-ba60-d861d6b16b03)
 ![image](https://github.com/user-attachments/assets/2a83e0b4-af97-488f-aa8e-a7b4b16a6026)
 ![image](https://github.com/user-attachments/assets/2ce86144-ecf0-4ab3-ad42-13326dfa84a3)
+![image](https://github.com/user-attachments/assets/51886138-d9c2-40e7-8643-509fc50021db)
 
 
 050baedcbb2a928a00bace3be442c888
